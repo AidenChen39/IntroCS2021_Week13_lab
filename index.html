@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lab</title>
+	<link rel="stylesheet" type="text/css" href="CSS.css"> 
+</head>
+<body>
+<div class="cont">
+	<h2>JS Calculator</h2>
+	<form method="post" action="#">
+	<p>
+		<label for="number1">Number 1</label><br>
+		<input id="number1" type="text" name="number1" >
+	</p>
+
+	<p>
+		<label for="number2">Number 2</label><br>
+		<input id="number2" type="text" name="number2">
+	</p>
+
+	<p>
+		<label for="way">Operate way?</label><br>
+		<select id="way"name="way" onchange="setButton(this.value)">
+			<option id="plus" value="plus" selected> + </option>
+			<option id="minus" value="minus" > - </option>
+			<option id="times" value="times"> * </option>
+			<option id="divide" value="divide"> / </option>
+		</select>
+	</p>
+
+	<p><input type="button" id="operateButton" value="Add" onclick="calculate()" class="button"></p>
+</form>
+	<p id="answer"></p>
+
+<script type="text/javascript">
+	
+
+	function calculate(){
+		var result;	
+		var n1s = document.getElementById("number1").value;
+		var n2s = document.getElementById("number2").value;
+		var n1 = parseInt(n1s);
+		var n2 = parseInt(n2s);
+		if(document.getElementById("way").value == "plus"){
+			result = n1 + n2;
+		}else if(document.getElementById("way").value == "minus"){
+			result = n1 - n2;
+		}else if(document.getElementById("way").value == "times"){
+			rsult = n1 * n2;
+		}else if(document.getElementById("way").value == "divide"){
+			result = n1 / n2;
+		}
+		document.getElementById("answer").textContent = "Result = " + result;
+		document.getElementById("number1").value = " ";
+		document.getElementById("number2").value = " ";
+	}
+
+	function setButton(val){
+		var button = document.getElementById("operateButton");
+		if(val == "plus"){
+			button.value = "Add";
+		}else if(val == "minus"){
+			button.value = "Minus";
+		}else if(val == "times"){
+			button.value = "Times"; 
+		}else{
+			button.value = "Divide";
+		}
+	}
+
+	function enter(){
+		if(event.keyCode == 13){
+			document.getElementById("operateButton").click();
+		}
+	}
+
+	
+	
+	
+
+</script>
+	
+
+	
+</div>
+</body>
+</html>
